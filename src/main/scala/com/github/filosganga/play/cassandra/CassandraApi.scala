@@ -77,7 +77,7 @@ class CassandraApi(cfg: Configuration, clusterFactory: ClusterFactory) {
 
     val session = sessions.get(dbName + ":" + keyspace, new Callable[Session]{
       def call() = {
-        c.connect()
+        c.connect(keyspace)
       }
     })
 
