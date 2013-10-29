@@ -42,7 +42,7 @@ libraryDependencies ++= {
      "org.slf4j" % "jcl-over-slf4j" % slf4jVersion,
      "org.slf4j" % "log4j-over-slf4j" % slf4jVersion,
      "com.twitter" %% "util-collection" % "6.6.0",
-     "com.google.guava" % "guava" % "15.0",
+     "com.google.guava" % "guava" % "13.0.1",
      "com.google.code.findbugs" % "jsr305" % "2.0.2",
      "org.specs2" %% "specs2" % "1.14" % "test",
      "org.mockito" % "mockito-all" % "1.9.5" % "test",

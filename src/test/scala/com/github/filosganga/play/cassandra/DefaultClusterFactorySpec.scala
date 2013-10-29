@@ -22,7 +22,6 @@
 package com.github.filosganga.play.cassandra
 
 import org.specs2.mutable._
-import org.specs2.specification.Scope
 import play.api.Configuration
 import com.typesafe.config.ConfigFactory
 
@@ -43,10 +42,15 @@ class DefaultClusterFactorySpec extends Specification {
     }
   }
 
-  trait Base extends Scope {
+  trait Base extends After with Before {
+
+    val cassandra = EmbeddedCassandra()
 
     val toTest = new DefaultClusterFactory
 
+    def after = cassandra.stop()
+
+    def before = cassandra.start()
   }
 
 }
