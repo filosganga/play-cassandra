@@ -2,9 +2,22 @@ name := "play-cassandra"
 
 organization := "com.github.filosganga"
 
+organizationHomepage := Some(url("http://filippodeluca.com"))
+
 version := "1.0-SNAPSHOT"
 
+homepage := Some(url("http://github.com/filosganga/play-cassandra"))
+
 licenses := Seq("Apache 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html"))
+
+scmInfo := Some(ScmInfo(
+    url("http://github.com/filosganga/play-cassandra"),
+    "scm:git:git@github.com:filosganga/play-cassandra.git",
+    Some("scm:git:git@github.com:filosganga/play-cassandra.git")
+))
+
+
+startYear := Some(2013)
 
 scalaVersion := "2.10.2"
 
@@ -37,4 +50,41 @@ libraryDependencies ++= {
      "ch.qos.logback" % "logback-classic" % "1.0.13" % "test"
    )
 }
+
+publishMavenStyle := true
+
+publishArtifact in Test := false
+
+publishTo := {
+  val nexus = "https://oss.sonatype.org/"
+  if (version.value.trim.endsWith("SNAPSHOT"))
+    Some("snapshots" at nexus + "content/repositories/snapshots")
+  else
+    Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+}
+
+pomIncludeRepository := { _ => false }
+
+pomExtra := (
+  <url>https://github.com/filosganga/play-cassandra</url>
+  <licenses>
+    <license>
+      <name>Apache 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <scm>
+    <url>git@github.com:filosganga/play-cassandra.git</url>
+    <connection>scm:git:git@github.com:filosganga/play-cassandra.git</connection>
+  </scm>
+  <developers>
+    <developer>
+      <id>filosganga</id>
+      <name>Filippo De Luca</name>
+      <url>http://filippodeluca.com</url>
+    </developer>
+  </developers>)
+
+
 
